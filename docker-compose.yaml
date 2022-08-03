@@ -1,0 +1,46 @@
+version: "3.9"
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - database-volume:/database/data
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo_express
+    environment:
+      - ME_CONFIG_MONGODB_URL=mongodb://mongo:27017/
+      - ME_CONFIG_BASICAUTH_USERNAME=mexpress
+      - ME_CONFIG_BASICAUTH_PASSWORD=mexpress
+    links:
+      - mongo
+    restart: unless-stopped
+    ports:
+      - "8081:8081"
+  api:
+    build:
+      context: ./tweets-api
+      dockerfile: Dockerfile
+    image: tweets_api
+    container_name: tweets_api
+    depends_on:
+      - mongo
+    restart: unless-stopped
+    ports:
+      - "8030:8030"
+  client:
+    build:
+      context: ./tweets-ui
+      dockerfile: Dockerfile
+    image: tweets_ui
+    container_name: tweets_ui
+    depends_on:
+      - api
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+volumes:
+  database-volume:

@@ -1,0 +1,6 @@
+tweets-api/database/data
+tweets-ui/node_modules
+tweets-ui/.idea
+tweets-api/.idea
+.DS_Store
+./.idea
