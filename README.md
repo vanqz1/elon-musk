@@ -2,7 +2,7 @@
 
 ## Prerequisites for running
 
-Instaalled Docker
+Installed Docker
 
 ## Running app
 
