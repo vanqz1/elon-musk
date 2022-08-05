@@ -16,7 +16,7 @@ docker-compose up -d
 This will start four containers: 
 |  Container name | Address  |  Description | 
 |---|---|---|
-| tweets_ui  |  localhost:300 |  React application that calles tweets_api to retrieve aggregated tweets data and display it in charts |  
+| tweets_ui  |  localhost:3000 |  React application that calles tweets_api to retrieve aggregated tweets data and display it in charts |  
 | tweets_api  | localhost:8030  | GoLang app that server aggregated tweets data extracted from mongo | 
 |  mongo | localhost:27017  | Container running  MongoDB instance storing tweets data| 
 |  mongo_express | localhost:8081  | MongoDB interface - easy for local testing  |
